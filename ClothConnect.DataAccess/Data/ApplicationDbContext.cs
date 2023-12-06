@@ -1,6 +1,5 @@
 ﻿
 using ClothConnect.Models;
-using ClothConnect.Models.Models;
 using Microsoft.EntityFrameworkCore;
 
 namespace ClothConnect.DataAccess.Data
@@ -33,7 +32,8 @@ namespace ClothConnect.DataAccess.Data
                    Price = 115,
                    Price50 = 110,
                    Price100 = 105,
-                   CategoryId=1
+                   CategoryId=1,
+                   ImageUrl=""
                },
                new Product
                {
@@ -46,7 +46,9 @@ namespace ClothConnect.DataAccess.Data
                    Price = 190,
                    Price50 = 180,
                    Price100 = 170,
-                   CategoryId = 2
+                   CategoryId = 2,
+                   ImageUrl = ""
+
 
                },
                new Product
@@ -60,7 +62,9 @@ namespace ClothConnect.DataAccess.Data
                    Price = 75,
                    Price50 = 70,
                    Price100 = 65,
-                   CategoryId = 3
+                   CategoryId = 3,
+                   ImageUrl = ""
+
 
                });
 

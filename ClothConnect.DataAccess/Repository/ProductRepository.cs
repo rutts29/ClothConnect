@@ -1,6 +1,6 @@
 ﻿using ClothConnect.DataAccess.Data;
 using ClothConnect.DataAccess.Repository.IRepository;
-using ClothConnect.Models.Models;
+using ClothConnect.Models;
 using System;
 using System.Collections.Generic;
 using System.Linq;

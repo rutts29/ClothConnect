@@ -1,4 +1,4 @@
-﻿using ClothConnect.Models.Models;
+﻿using ClothConnect.Models;
 using System;
 using System.Collections.Generic;
 using System.Linq;

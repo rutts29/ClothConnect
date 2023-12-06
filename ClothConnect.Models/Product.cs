@@ -7,7 +7,7 @@ using System.Text;
 using System.Threading.Tasks;
 using Microsoft.AspNetCore.Mvc.ModelBinding.Validation;
 
-namespace ClothConnect.Models.Models
+namespace ClothConnect.Models
 {
     public class Product
     {
@@ -43,7 +43,9 @@ namespace ClothConnect.Models.Models
         public double Price100 { get; set; }
         public int CategoryId { get; set; }
         [ForeignKey("CategoryId")]
+        [ValidateNever]
         public Category Category { get; set; }
-
+        [ValidateNever]
+        public string ImageUrl { get; set; }
     }
 }
