@@ -2,7 +2,7 @@
 using ClothConnect.Models;
 using Microsoft.EntityFrameworkCore;
 
-namespace ClothConnect.Data
+namespace ClothConnect.DataAccess.Data
 {
     public class ApplicationDbContext : DbContext
     {

@@ -1,6 +1,7 @@
-﻿using ClothConnect.Data;
+﻿using ClothConnect.DataAccess.Data;
 using ClothConnect.Models;
 using Microsoft.AspNetCore.Mvc;
+
 
 namespace ClothConnect.Controllers
 {

@@ -1,4 +1,4 @@
-using ClothConnect.Data;
+using ClothConnect.DataAccess.Data;
 using Microsoft.EntityFrameworkCore;
 
 var builder = WebApplication.CreateBuilder(args);

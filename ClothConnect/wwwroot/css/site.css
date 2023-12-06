@@ -1,22 +1,96 @@
+/* Existing styles */
 html {
-  font-size: 14px;
+    font-size: 14px;
 }
 
 @media (min-width: 768px) {
-  html {
-    font-size: 16px;
-  }
+    html {
+        font-size: 16px;
+    }
 }
 
 .btn:focus, .btn:active:focus, .btn-link.nav-link:focus, .form-control:focus, .form-check-input:focus {
-  box-shadow: 0 0 0 0.1rem white, 0 0 0 0.25rem #258cfb;
+    box-shadow: 0 0 0 0.1rem white, 0 0 0 0.25rem #258cfb;
 }
 
 html {
-  position: relative;
-  min-height: 100%;
+    position: relative;
+    min-height: 100%;
 }
 
 body {
-  margin-bottom: 60px;
+    margin-bottom: 60px;
 }
+
+/* New enhancements */
+
+/* Enhanced Shadows for Table and Buttons */
+.table {
+    box-shadow: 0 4px 8px 0 rgba(0,0,0,0.2);
+    transition: 0.3s;
+}
+
+    .table:hover {
+        box-shadow: 0 8px 16px 0 rgba(0,0,0,0.2);
+    }
+
+.btn {
+    box-shadow: 2px 2px 5px rgba(0,0,0,0.2);
+}
+
+/* Styling for 'Add New Category' and Action Buttons */
+.btn-primary {
+    background-color: #007bff;
+    border-color: #007bff;
+}
+
+.btn-danger {
+    background-color: #dc3545;
+    border-color: #dc3545;
+}
+
+    .btn-primary:hover, .btn-danger:hover {
+        opacity: 0.85;
+    }
+
+/* Styling for Category List Heading */
+h2.text-primary {
+    color: #007bff;
+    font-weight: bold;
+    margin-bottom: 20px;
+}
+
+/* Table Row Hover Effect */
+.table tbody tr:hover {
+    background-color: #f8f9fa;
+}
+
+/* Button Group Padding Adjustment */
+.btn-group .btn {
+    margin: 0 10px;
+}
+
+.form-floating > label {
+    color: #000000; /* Or any dark color you prefer */
+    font-weight: bold; /* Optional: if you want to make it bold */
+}
+
+/* Navbar Enhancements */
+/*.navbar-dark.bg-primary {
+    background-color: #007bff;*/ /* Adjust the color as per your brand theme */
+/*}
+
+.navbar-brand {
+    font-weight: bold;
+    color: #fff;
+}*/
+
+/* Footer Styling */
+/*.footer {
+    padding: 10px 0;
+    color: #fff;
+}
+
+    .footer i {
+        margin-right: 5px;
+    }*/
