@@ -24,6 +24,7 @@ namespace ClothConnect.DataAccess.Repository
           
             Category = new CategoryRepository(_db);
             Product = new ProductRepository(_db);
+            ProductImage = new ProductImageRepository(_db);
 
 
         }
