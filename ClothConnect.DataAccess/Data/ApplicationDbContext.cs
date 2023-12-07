@@ -1,26 +1,34 @@
-﻿
 using ClothConnect.Models;
 using ClothConnect.Models.Models;
 using Microsoft.EntityFrameworkCore;
 
 namespace ClothConnect.DataAccess.Data
 {
+    // Defines the database context for ClothConnect application
     public class ApplicationDbContext : DbContext
     {
+        // Constructor for the ApplicationDbContext with options
         public ApplicationDbContext(DbContextOptions<ApplicationDbContext> options) : base(options)
         {
                 
         }
+
+        // DbSet for Categories table
         public DbSet <Category> Categories { get; set; }
+        // DbSet for Products table
         public DbSet<Product> Products { get; set; }
 
+        // Overriding the OnModelCreating method to configure the model
         protected override void OnModelCreating(ModelBuilder modelBuilder)
         {
+            // Seeding the Category table with initial data
             modelBuilder.Entity<Category>().HasData(
                 new Category { Id = 1, Name = "Gown", DisplayOrder = 5 },
                 new Category { Id = 2, Name = "Jacket", DisplayOrder = 2 },
                 new Category { Id = 3, Name = "Dress", DisplayOrder = 3 }
                 );
+
+            // Seeding the Product table with initial data
             modelBuilder.Entity<Product>().HasData(
                new Product
                {
@@ -47,7 +55,6 @@ namespace ClothConnect.DataAccess.Data
                    Price50 = 180,
                    Price100 = 170,
                    CategoryId = 2
-
                },
                new Product
                {
@@ -61,12 +68,7 @@ namespace ClothConnect.DataAccess.Data
                    Price50 = 70,
                    Price100 = 65,
                    CategoryId = 3
-
                });
-
-
-
         }
-
     }
 }
