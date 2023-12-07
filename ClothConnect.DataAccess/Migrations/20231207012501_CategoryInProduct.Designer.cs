@@ -3,6 +3,7 @@ using ClothConnect.DataAccess.Data;
 using Microsoft.EntityFrameworkCore;
 using Microsoft.EntityFrameworkCore.Infrastructure;
 using Microsoft.EntityFrameworkCore.Metadata;
+using Microsoft.EntityFrameworkCore.Migrations;
 using Microsoft.EntityFrameworkCore.Storage.ValueConversion;
 
 #nullable disable
@@ -10,9 +11,11 @@ using Microsoft.EntityFrameworkCore.Storage.ValueConversion;
 namespace ClothConnect.DataAccess.Migrations
 {
     [DbContext(typeof(ApplicationDbContext))]
-    partial class ApplicationDbContextModelSnapshot : ModelSnapshot
+    [Migration("20231207012501_CategoryInProduct")]
+    partial class CategoryInProduct
     {
-        protected override void BuildModel(ModelBuilder modelBuilder)
+        /// <inheritdoc />
+        protected override void BuildTargetModel(ModelBuilder modelBuilder)
         {
 #pragma warning disable 612, 618
             modelBuilder
@@ -77,10 +80,6 @@ namespace ClothConnect.DataAccess.Migrations
                         .IsRequired()
                         .HasColumnType("nvarchar(max)");
 
-                    b.Property<string>("ImageUrl")
-                        .IsRequired()
-                        .HasColumnType("nvarchar(max)");
-
                     b.Property<string>("ItemCode")
                         .IsRequired()
                         .HasColumnType("nvarchar(max)");
@@ -117,7 +116,6 @@ namespace ClothConnect.DataAccess.Migrations
                             Id = 1,
                             CategoryId = 1,
                             Description = "Exquisite evening gown perfect for gala events. Features a sleek silhouette and luxurious fabric that gracefully flows to the floor.",
-                            ImageUrl = "",
                             ItemCode = "ELEG001122",
                             ListPrice = 120.0,
                             Price = 115.0,
@@ -131,7 +129,6 @@ namespace ClothConnect.DataAccess.Migrations
                             Id = 2,
                             CategoryId = 2,
                             Description = "A timeless leather jacket, ideal for adding an edge to any outfit. Made with premium quality leather for durability and style.",
-                            ImageUrl = "",
                             ItemCode = "CLJ8889002",
                             ListPrice = 200.0,
                             Price = 190.0,
@@ -145,7 +142,6 @@ namespace ClothConnect.DataAccess.Migrations
                             Id = 3,
                             CategoryId = 3,
                             Description = "Flowy and light, this maxi dress is perfect for sunny days. Features a floral print and a comfortable, airy design.",
-                            ImageUrl = "",
                             ItemCode = "SBMD5555003",
                             ListPrice = 80.0,
                             Price = 75.0,

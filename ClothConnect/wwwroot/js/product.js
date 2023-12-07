@@ -9,7 +9,7 @@ function loadDataTable() {
         "ajax": { url: '/admin/product/getall' },
         "columns": [
             { data: 'title', "width": "25%" },
-            { data: 'Item Code', "width": "15%" },
+            { data: 'ItemCode', "width": "15%" },
             { data: 'listPrice', "width": "10%" },
             { data: 'seller', "width": "15%" },
             { data: 'category.name', "width": "10%" },

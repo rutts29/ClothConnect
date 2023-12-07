@@ -12,6 +12,8 @@ namespace ClothConnect.DataAccess.Data
         }
         public DbSet <Category> Categories { get; set; }
         public DbSet<Product> Products { get; set; }
+        public DbSet<ProductImage> ProductImages { get; set; }
+
 
         protected override void OnModelCreating(ModelBuilder modelBuilder)
         {
@@ -32,8 +34,8 @@ namespace ClothConnect.DataAccess.Data
                    Price = 115,
                    Price50 = 110,
                    Price100 = 105,
-                   CategoryId=1,
-                   ImageUrl=""
+                   CategoryId = 1,
+                   ImageUrl = ""
                },
                new Product
                {

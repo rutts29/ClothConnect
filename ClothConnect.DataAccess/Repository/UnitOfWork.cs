@@ -13,6 +13,8 @@ namespace ClothConnect.DataAccess.Repository
         private ApplicationDbContext _db;
         public ICategoryRepository Category { get; private set; }
         public IProductRepository Product { get; private set; }
+        public IProductImageRepository ProductImage { get; private set; }
+
 
 
 

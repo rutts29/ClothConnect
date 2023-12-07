@@ -7,7 +7,7 @@
 namespace ClothConnect.DataAccess.Migrations
 {
     /// <inheritdoc />
-    public partial class addCategoryProductandForeignKeyRelationforProducts : Migration
+    public partial class NewMigration : Migration
     {
         /// <inheritdoc />
         protected override void Up(MigrationBuilder migrationBuilder)
@@ -39,16 +39,29 @@ namespace ClothConnect.DataAccess.Migrations
                     ListPrice = table.Column<double>(type: "float", nullable: false),
                     Price = table.Column<double>(type: "float", nullable: false),
                     Price50 = table.Column<double>(type: "float", nullable: false),
-                    Price100 = table.Column<double>(type: "float", nullable: false),
-                    CategoryId = table.Column<int>(type: "int", nullable: false)
+                    Price100 = table.Column<double>(type: "float", nullable: false)
                 },
                 constraints: table =>
                 {
                     table.PrimaryKey("PK_Products", x => x.Id);
+                });
+
+            migrationBuilder.CreateTable(
+                name: "ProductImages",
+                columns: table => new
+                {
+                    Id = table.Column<int>(type: "int", nullable: false)
+                        .Annotation("SqlServer:Identity", "1, 1"),
+                    ImageUrl = table.Column<string>(type: "nvarchar(max)", nullable: false),
+                    ProductId = table.Column<int>(type: "int", nullable: false)
+                },
+                constraints: table =>
+                {
+                    table.PrimaryKey("PK_ProductImages", x => x.Id);
                     table.ForeignKey(
-                        name: "FK_Products_Categories_CategoryId",
-                        column: x => x.CategoryId,
-                        principalTable: "Categories",
+                        name: "FK_ProductImages_Products_ProductId",
+                        column: x => x.ProductId,
+                        principalTable: "Products",
                         principalColumn: "Id",
                         onDelete: ReferentialAction.Cascade);
                 });
@@ -65,28 +78,31 @@ namespace ClothConnect.DataAccess.Migrations
 
             migrationBuilder.InsertData(
                 table: "Products",
-                columns: new[] { "Id", "CategoryId", "Description", "ItemCode", "ListPrice", "Price", "Price100", "Price50", "Seller", "Title" },
+                columns: new[] { "Id", "Description", "ItemCode", "ListPrice", "Price", "Price100", "Price50", "Seller", "Title" },
                 values: new object[,]
                 {
-                    { 1, 1, "Exquisite evening gown perfect for gala events. Features a sleek silhouette and luxurious fabric that gracefully flows to the floor.", "ELEG001122", 120.0, 115.0, 105.0, 110.0, "Sophia Lorenz", "Elegant Evening Gown" },
-                    { 2, 2, "A timeless leather jacket, ideal for adding an edge to any outfit. Made with premium quality leather for durability and style.", "CLJ8889002", 200.0, 190.0, 170.0, 180.0, "Mike Johnson", "Classic Leather Jacket" },
-                    { 3, 3, "Flowy and light, this maxi dress is perfect for sunny days. Features a floral print and a comfortable, airy design.", "SBMD5555003", 80.0, 75.0, 65.0, 70.0, "Luna Rodriguez", "Summer Breeze Maxi Dress" }
+                    { 1, "Exquisite evening gown perfect for gala events. Features a sleek silhouette and luxurious fabric that gracefully flows to the floor.", "ELEG001122", 120.0, 115.0, 105.0, 110.0, "Sophia Lorenz", "Elegant Evening Gown" },
+                    { 2, "A timeless leather jacket, ideal for adding an edge to any outfit. Made with premium quality leather for durability and style.", "CLJ8889002", 200.0, 190.0, 170.0, 180.0, "Mike Johnson", "Classic Leather Jacket" },
+                    { 3, "Flowy and light, this maxi dress is perfect for sunny days. Features a floral print and a comfortable, airy design.", "SBMD5555003", 80.0, 75.0, 65.0, 70.0, "Luna Rodriguez", "Summer Breeze Maxi Dress" }
                 });
 
             migrationBuilder.CreateIndex(
-                name: "IX_Products_CategoryId",
-                table: "Products",
-                column: "CategoryId");
+                name: "IX_ProductImages_ProductId",
+                table: "ProductImages",
+                column: "ProductId");
         }
 
         /// <inheritdoc />
         protected override void Down(MigrationBuilder migrationBuilder)
         {
             migrationBuilder.DropTable(
-                name: "Products");
+                name: "Categories");
 
             migrationBuilder.DropTable(
-                name: "Categories");
+                name: "ProductImages");
+
+            migrationBuilder.DropTable(
+                name: "Products");
         }
     }
 }

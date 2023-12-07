@@ -5,7 +5,7 @@
 namespace ClothConnect.DataAccess.Migrations
 {
     /// <inheritdoc />
-    public partial class addImageUrltoProduct : Migration
+    public partial class ImageURLInProduct : Migration
     {
         /// <inheritdoc />
         protected override void Up(MigrationBuilder migrationBuilder)

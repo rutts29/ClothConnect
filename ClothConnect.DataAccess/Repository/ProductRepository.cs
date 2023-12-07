@@ -32,11 +32,13 @@ namespace ClothConnect.DataAccess.Repository
                 objFromDb.Price100 = obj.Price100;
                 objFromDb.Description = obj.Description;
                 objFromDb.Seller = obj.Seller;
-                if (obj.ImageUrl != null)
-                {
-                    objFromDb.ImageUrl = obj.ImageUrl;
-                }
+                //objFromDb.ProductImages = obj.ProductImages;
+
+                //if (obj.ImageUrl != null)
+                //{
+                //    objFromDb.ImageUrl = obj.ImageUrl;
+                //}
             }
         }
-    }
+        }
 }

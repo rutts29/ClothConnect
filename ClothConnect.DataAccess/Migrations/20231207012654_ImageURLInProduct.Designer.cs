@@ -11,8 +11,8 @@ using Microsoft.EntityFrameworkCore.Storage.ValueConversion;
 namespace ClothConnect.DataAccess.Migrations
 {
     [DbContext(typeof(ApplicationDbContext))]
-    [Migration("20231206081748_addImageUrltoProduct")]
-    partial class addImageUrltoProduct
+    [Migration("20231207012654_ImageURLInProduct")]
+    partial class ImageURLInProduct
     {
         /// <inheritdoc />
         protected override void BuildTargetModel(ModelBuilder modelBuilder)
@@ -65,7 +65,7 @@ namespace ClothConnect.DataAccess.Migrations
                         });
                 });
 
-            modelBuilder.Entity("ClothConnect.Models.Models.Product", b =>
+            modelBuilder.Entity("ClothConnect.Models.Product", b =>
                 {
                     b.Property<int>("Id")
                         .ValueGeneratedOnAdd()
@@ -159,7 +159,29 @@ namespace ClothConnect.DataAccess.Migrations
                         });
                 });
 
-            modelBuilder.Entity("ClothConnect.Models.Models.Product", b =>
+            modelBuilder.Entity("ClothConnect.Models.ProductImage", b =>
+                {
+                    b.Property<int>("Id")
+                        .ValueGeneratedOnAdd()
+                        .HasColumnType("int");
+
+                    SqlServerPropertyBuilderExtensions.UseIdentityColumn(b.Property<int>("Id"));
+
+                    b.Property<string>("ImageUrl")
+                        .IsRequired()
+                        .HasColumnType("nvarchar(max)");
+
+                    b.Property<int>("ProductId")
+                        .HasColumnType("int");
+
+                    b.HasKey("Id");
+
+                    b.HasIndex("ProductId");
+
+                    b.ToTable("ProductImages");
+                });
+
+            modelBuilder.Entity("ClothConnect.Models.Product", b =>
                 {
                     b.HasOne("ClothConnect.Models.Category", "Category")
                         .WithMany()
@@ -168,6 +190,17 @@ namespace ClothConnect.DataAccess.Migrations
                         .IsRequired();
 
                     b.Navigation("Category");
+                });
+
+            modelBuilder.Entity("ClothConnect.Models.ProductImage", b =>
+                {
+                    b.HasOne("ClothConnect.Models.Product", "Product")
+                        .WithMany()
+                        .HasForeignKey("ProductId")
+                        .OnDelete(DeleteBehavior.Cascade)
+                        .IsRequired();
+
+                    b.Navigation("Product");
                 });
 #pragma warning restore 612, 618
         }

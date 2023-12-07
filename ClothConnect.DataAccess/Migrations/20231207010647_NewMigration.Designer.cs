@@ -11,8 +11,8 @@ using Microsoft.EntityFrameworkCore.Storage.ValueConversion;
 namespace ClothConnect.DataAccess.Migrations
 {
     [DbContext(typeof(ApplicationDbContext))]
-    [Migration("20231206081245_addCategoryProductandForeignKeyRelationforProducts")]
-    partial class addCategoryProductandForeignKeyRelationforProducts
+    [Migration("20231207010647_NewMigration")]
+    partial class NewMigration
     {
         /// <inheritdoc />
         protected override void BuildTargetModel(ModelBuilder modelBuilder)
@@ -65,16 +65,13 @@ namespace ClothConnect.DataAccess.Migrations
                         });
                 });
 
-            modelBuilder.Entity("ClothConnect.Models.Models.Product", b =>
+            modelBuilder.Entity("ClothConnect.Models.Product", b =>
                 {
                     b.Property<int>("Id")
                         .ValueGeneratedOnAdd()
                         .HasColumnType("int");
 
                     SqlServerPropertyBuilderExtensions.UseIdentityColumn(b.Property<int>("Id"));
-
-                    b.Property<int>("CategoryId")
-                        .HasColumnType("int");
 
                     b.Property<string>("Description")
                         .IsRequired()
@@ -106,15 +103,12 @@ namespace ClothConnect.DataAccess.Migrations
 
                     b.HasKey("Id");
 
-                    b.HasIndex("CategoryId");
-
                     b.ToTable("Products");
 
                     b.HasData(
                         new
                         {
                             Id = 1,
-                            CategoryId = 1,
                             Description = "Exquisite evening gown perfect for gala events. Features a sleek silhouette and luxurious fabric that gracefully flows to the floor.",
                             ItemCode = "ELEG001122",
                             ListPrice = 120.0,
@@ -127,7 +121,6 @@ namespace ClothConnect.DataAccess.Migrations
                         new
                         {
                             Id = 2,
-                            CategoryId = 2,
                             Description = "A timeless leather jacket, ideal for adding an edge to any outfit. Made with premium quality leather for durability and style.",
                             ItemCode = "CLJ8889002",
                             ListPrice = 200.0,
@@ -140,7 +133,6 @@ namespace ClothConnect.DataAccess.Migrations
                         new
                         {
                             Id = 3,
-                            CategoryId = 3,
                             Description = "Flowy and light, this maxi dress is perfect for sunny days. Features a floral print and a comfortable, airy design.",
                             ItemCode = "SBMD5555003",
                             ListPrice = 80.0,
@@ -152,15 +144,37 @@ namespace ClothConnect.DataAccess.Migrations
                         });
                 });
 
-            modelBuilder.Entity("ClothConnect.Models.Models.Product", b =>
+            modelBuilder.Entity("ClothConnect.Models.ProductImage", b =>
                 {
-                    b.HasOne("ClothConnect.Models.Category", "Category")
+                    b.Property<int>("Id")
+                        .ValueGeneratedOnAdd()
+                        .HasColumnType("int");
+
+                    SqlServerPropertyBuilderExtensions.UseIdentityColumn(b.Property<int>("Id"));
+
+                    b.Property<string>("ImageUrl")
+                        .IsRequired()
+                        .HasColumnType("nvarchar(max)");
+
+                    b.Property<int>("ProductId")
+                        .HasColumnType("int");
+
+                    b.HasKey("Id");
+
+                    b.HasIndex("ProductId");
+
+                    b.ToTable("ProductImages");
+                });
+
+            modelBuilder.Entity("ClothConnect.Models.ProductImage", b =>
+                {
+                    b.HasOne("ClothConnect.Models.Product", "Product")
                         .WithMany()
-                        .HasForeignKey("CategoryId")
+                        .HasForeignKey("ProductId")
                         .OnDelete(DeleteBehavior.Cascade)
                         .IsRequired();
 
-                    b.Navigation("Category");
+                    b.Navigation("Product");
                 });
 #pragma warning restore 612, 618
         }

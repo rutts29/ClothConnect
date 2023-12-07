@@ -10,7 +10,8 @@ using Microsoft.AspNetCore.Mvc.ModelBinding.Validation;
 namespace ClothConnect.Models
 {
     public class Product
-    {
+    { 
+    
         [Key]
         public int Id { get; set; }
         [Required]
@@ -47,5 +48,9 @@ namespace ClothConnect.Models
         public Category Category { get; set; }
         [ValidateNever]
         public string ImageUrl { get; set; }
+        //[ValidateNever]
+        //public List<ProductImage> ProductImages { get; set; }
+
+
     }
 }
