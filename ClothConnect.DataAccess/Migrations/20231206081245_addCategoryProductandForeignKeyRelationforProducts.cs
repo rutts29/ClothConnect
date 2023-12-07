@@ -1,4 +1,4 @@
-﻿using Microsoft.EntityFrameworkCore.Migrations;
+using Microsoft.EntityFrameworkCore.Migrations;
 
 #nullable disable
 
@@ -6,12 +6,18 @@
 
 namespace ClothConnect.DataAccess.Migrations
 {
-    /// <inheritdoc />
+    /// <summary>
+    /// Migration for adding Category and Product tables and establishing a foreign key relationship between them.
+    /// </summary>
     public partial class addCategoryProductandForeignKeyRelationforProducts : Migration
     {
-        /// <inheritdoc />
+        /// <summary>
+        /// Method to define the logic for applying the migration.
+        /// </summary>
+        /// <param name="migrationBuilder">Builder for constructing migration commands.</param>
         protected override void Up(MigrationBuilder migrationBuilder)
         {
+            // Create the Categories table
             migrationBuilder.CreateTable(
                 name: "Categories",
                 columns: table => new
@@ -26,6 +32,7 @@ namespace ClothConnect.DataAccess.Migrations
                     table.PrimaryKey("PK_Categories", x => x.Id);
                 });
 
+            // Create the Products table with a foreign key to Categories
             migrationBuilder.CreateTable(
                 name: "Products",
                 columns: table => new
@@ -53,6 +60,7 @@ namespace ClothConnect.DataAccess.Migrations
                         onDelete: ReferentialAction.Cascade);
                 });
 
+            // Insert initial data into Categories table
             migrationBuilder.InsertData(
                 table: "Categories",
                 columns: new[] { "Id", "DisplayOrder", "Name" },
@@ -63,6 +71,7 @@ namespace ClothConnect.DataAccess.Migrations
                     { 3, 3, "Dress" }
                 });
 
+            // Insert initial data into Products table
             migrationBuilder.InsertData(
                 table: "Products",
                 columns: new[] { "Id", "CategoryId", "Description", "ItemCode", "ListPrice", "Price", "Price100", "Price50", "Seller", "Title" },
@@ -73,20 +82,16 @@ namespace ClothConnect.DataAccess.Migrations
                     { 3, 3, "Flowy and light, this maxi dress is perfect for sunny days. Features a floral print and a comfortable, airy design.", "SBMD5555003", 80.0, 75.0, 65.0, 70.0, "Luna Rodriguez", "Summer Breeze Maxi Dress" }
                 });
 
+            // Create an index for the CategoryId column in the Products table
             migrationBuilder.CreateIndex(
                 name: "IX_Products_CategoryId",
                 table: "Products",
                 column: "CategoryId");
         }
 
-        /// <inheritdoc />
+        /// <summary>
+        /// Method to define the logic for reverting the migration.
+        /// </summary>
+        /// <param name="migrationBuilder">Builder for constructing migration commands.</param>
         protected override void Down(MigrationBuilder migrationBuilder)
-        {
-            migrationBuilder.DropTable(
-                name: "Products");
-
-            migrationBuilder.DropTable(
-                name: "Categories");
-        }
-    }
-}
+       
